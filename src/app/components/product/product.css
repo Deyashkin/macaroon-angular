@@ -1,0 +1,88 @@
+.products__title {
+  margin-bottom: 143px;
+  font-size: 45px;
+  font-family: "Tavolga", sans-serif;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.products {
+  padding-block: 120px;
+}
+
+.products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(263px, 253px));
+  column-gap: 20px;
+  row-gap: 136px;
+  /*justify-content: space-between;*/
+  justify-content: space-evenly;
+
+}
+
+.product__card {
+  position: relative;
+  padding: 109px 20px 27px 20px;
+  max-width: 263px;
+  display: flex;
+  flex-direction: column;
+  border-width: 2px;
+  border-color: rgb(255, 255, 255);
+  border-style: solid;
+  border-radius: 20px;
+  text-align: center;
+}
+
+
+.product__card:hover .product__image {
+  transform: scale(1.1);
+}
+
+.product__image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -60px;
+  transition: transform .3s ease-in-out;
+}
+
+.product__title {
+  margin-bottom: 28px;
+  font-size: 18px;
+  font-family: "Tavolga", sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.product__content {
+  max-width: 222px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product__text {
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  text-align: start;
+}
+
+.product__text p:first-child {
+  margin-bottom: 16px;
+}
+
+.product__button {
+  width: 130px;
+}
+
+@media screen and (max-width: 567px) {
+  .products {
+    padding-block: 100px;
+  }
+
+  .products__title {
+    margin-bottom: 122px;
+  }
+
+  .products__grid {
+    row-gap: 142px;
+  }
+}

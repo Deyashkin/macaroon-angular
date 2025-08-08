@@ -10,7 +10,15 @@
           <p>Побалуйте себя и своих близких самыми вкусными и ароматными домашними
             пироженками Macaroon!</p>
         </div>
-        <button class="button hero__button" type="button" (click)="scrollTo(productsElement)">Выбрать макарун</button>
+        <button
+          class="button hero__button"
+          type="button"
+          buttonEffect
+          [defaultBgColor]="'#71081e'"
+          [hoverBgColor]="'#d7485c'"
+          (click)="scrollTo('products')">
+          Выбрать макарун
+        </button>
       </div>
       <div class="grid-2-cols__column-right">
         <span class="circle-1"></span>
@@ -42,50 +50,13 @@
              width="520" height="314" loading="lazy">
       </div>
     </div>
-    <div class="grid-4-cols benefits__grid-4-cols">
-      @for (benefit of benefits; track benefit.id) {
-      <div class="grid-4-cols__item">
-        <div class="benefit">
-          <div class="benefit__number">
-            <div class="benefit__number-text">{{ benefit.number }}</div>
-            <div class="benefit__number-bg"></div>
-          </div>
-          <div class="benefit__title">{{ benefit.title }}</div>
-          <div class="benefit__description">
-            <p>{{ benefit.description }}</p>
-          </div>
-        </div>
-      </div>
-      }
-    </div>
+    <benefit-component [benefits]="benefits"></benefit-component>
   </div>
 
 </section>
 
-<section class="products" #productsElement>
-  <div class="container">
-    <h2 class="h2 products__title">
-      Выберите свой макарун
-    </h2>
-    <div class="products__grid">
-      @for (product of products; track product.id) {
-      <div class="product__card">
-        <div class="product__image">
-          <img src="images/products/{{ product.image }}" alt="{{ product.title }}">
-        </div>
-        <div class="product__title">{{ product.title }}</div>
-        <div class="product__content">
-          <div class="product__text">
-            <p>{{ product.quantity }} шт.</p>
-            <p>{{ product.price }} руб.</p>
-          </div>
-          <button class="button product__button" (click)="addToCart(product, ctaElement)">Заказать</button>
-        </div>
-      </div>
-      }
-    </div>
-  </div>
-</section>
+
+<product-component (productAdded)="showProductAddedAlert($event)"></product-component>
 
 <section class="cta" #ctaElement>
   <div class="container">
@@ -107,7 +78,7 @@
                    name="choice"
                    id="choice"
                    placeholder="Напишите, что хотите заказать..."
-                   [(ngModel)]="formValues.productTitle"
+                   [ngModel]="cartService.selectedProduct"
             >
           </fieldset>
           <fieldset class="form__fieldset form__fieldset-contact">
@@ -128,7 +99,15 @@
                    [(ngModel)]="formValues.phone"
             >
 
-            <button class="button form__button" type="submit" (click)="createOrder()">Оформить заказ</button>
+            <button
+              class="button form__button"
+              type="submit"
+              buttonEffect
+              [defaultBgColor]="'#71081e'"
+              [hoverBgColor]="'#d7485c'"
+              (click)="createOrder()">
+              Оформить заказ
+            </button>
           </fieldset>
           <img class="strawberry-2" src="images/strawberry-2.png" alt="Клубника">
         </form>

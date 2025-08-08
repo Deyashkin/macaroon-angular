@@ -2,11 +2,13 @@
   @if (showPresent) {
     <div class="present__button">
       <img
-        src="images/present.png"
-        alt="Подарок"
+        src="images/cart.png"
+        alt="Корзина"
+        width="50"
       >
-      <div class="present__tooltip">Оформите заказ <br>
-        и получите подарок!
+      <div class="present__count">{{ cartService.count }}</div>
+      <div class="present__tooltip">
+        {{ cartService.totalAmount | currency:'':'':'1.2-2' }} руб.
       </div>
     </div>
   }

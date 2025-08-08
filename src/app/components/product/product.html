@@ -1,0 +1,31 @@
+<section class="products" #productsElement>
+  <div class="container">
+    <h2 class="h2 products__title">
+      Выберите свой макарун
+    </h2>
+    <div class="products__grid">
+      @for (product of products; track product.id) {
+        <div class="product__card">
+          <div class="product__image">
+            <img src="images/products/{{ product.image }}" alt="{{ product.title }}">
+          </div>
+          <div class="product__title">{{ product.title }}</div>
+          <div class="product__content">
+            <div class="product__text">
+              <p>{{ product.quantity }} шт.</p>
+              <p>{{ product.price | currency:'':'':'1.2-2' }} руб.</p>
+            </div>
+            <button
+              class="button product__button"
+              buttonEffect
+              [defaultBgColor]="'#71081e'"
+              [hoverBgColor]="'#d7485c'"
+              (click)="addToCart(product)">
+              Заказать
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

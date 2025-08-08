@@ -28,6 +28,9 @@
 
 .present__tooltip {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: -120px;
   left: -216px;
   width: 179px;
@@ -57,6 +60,23 @@
   rotate: -45deg;
   clip-path: polygon(100% 0, 0% 100%, 100% 100%);
   translate: 0px;
+}
+
+.present__count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #fff;
+  color: #71081e;
+  border: 2px solid #71081e;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 350px) {

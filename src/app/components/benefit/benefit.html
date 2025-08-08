@@ -1,0 +1,16 @@
+<div class="grid-4-cols benefits__grid-4-cols">
+  @for (benefit of benefits; track benefit.id) {
+    <div class="grid-4-cols__item">
+      <div class="benefit">
+        <div class="benefit__number">
+          <div class="benefit__number-text">{{ benefit.number }}</div>
+          <div class="benefit__number-bg"></div>
+        </div>
+        <div class="benefit__title">{{ benefit.title }}</div>
+        <div class="benefit__description">
+          <p>{{ benefit.description | truncate }}</p>
+        </div>
+      </div>
+    </div>
+  }
+</div>
