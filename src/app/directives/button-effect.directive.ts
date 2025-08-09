@@ -1,24 +1,25 @@
-import { Directive, ElementRef, Renderer2, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, type OnInit } from '@angular/core';
 
 @Directive({
   selector: '[buttonEffect]',
   standalone: true,
 })
-export class ButtonEffectDirective {
-  @Input() defaultBgColor: string = '#71081e';
-  @Input() hoverBgColor: string = '#d7485c';
 
-  constructor(private el: ElementRef, private r: Renderer2) {}
+export class ButtonEffectDirective implements OnInit {
+  @Input() defaultBgColor: string = 'linear-gradient(0deg, rgb(113, 8, 30) 0%, rgb(215, 72, 92) 100%)';
+  @Input() hoverBgColor: string = 'linear-gradient(0deg, rgb(156, 11, 42) 0%, rgb(255, 80, 103) 100%)';
+
+  constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    this.r.setStyle(this.el.nativeElement, 'background-color', this.defaultBgColor);
+    this.el.nativeElement.style.background = this.defaultBgColor;
   }
 
-  @HostListener('mouseenter') onEnter() {
-    this.r.setStyle(this.el.nativeElement, 'background-color', this.hoverBgColor);
+  @HostListener('mouseenter') onMouseEnter() {
+    this.el.nativeElement.style.background = this.hoverBgColor;
   }
 
-  @HostListener('mouseleave') onLeave() {
-    this.r.setStyle(this.el.nativeElement, 'background-color', this.defaultBgColor);
+  @HostListener('mouseleave') onMouseLeave() {
+    this.el.nativeElement.style.background = this.defaultBgColor;
   }
 }
